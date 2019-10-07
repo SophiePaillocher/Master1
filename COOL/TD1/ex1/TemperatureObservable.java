@@ -3,18 +3,23 @@ package ex1;
 import java.util.ArrayList;
 
 public abstract class TemperatureObservable{
+	
 	private ArrayList<TemperatureObserver> observers;
+	
 	protected TemperatureObservable(){
 		observers = new ArrayList<TemperatureObserver>();
 	}
-	public void signIn (TemperatureObserver station){
-		observers.add(station);
+	
+	public void signIn (TemperatureObserver observer){
+		observers.add(observer);
 	}
-	public void signOut (TemperatureObserver station){
-		observers.remove (station);
+	
+	public void signOut (TemperatureObserver observer){
+		observers.remove (observer);
 	}
-	public void notify(){
+	
+	public void notify(Event event) {
 		for (TemperatureObserver observer : observers)
-			observer.update();
+			observer.update(event);
 	}
 }

@@ -5,16 +5,16 @@ import java.util.ArrayList;
 /**
  * Represente un capteur de temperature.
  */
-public class TemperatureSensor 
+public class TemperatureSensor extends TemperatureObservable
 {
 	private String name;
 	private float temperature;
-	private ArrayList<WeatherStation> weatherStations;
+	//private ArrayList<WeatherStation> weatherStations;
 	
 	public TemperatureSensor(String name)
 	{
 		this.name = name;
-		this.weatherStations = new ArrayList<WeatherStation>();
+		//this.weatherStations = new ArrayList<WeatherStation>();
 	}
 	
 	public float getTemperature()
@@ -25,12 +25,13 @@ public class TemperatureSensor
 	public void setTemperature(float temperature)
 	{
 		this.temperature = temperature;
-		for (WeatherStation ws : weatherStations) 
-			ws.displayTemperature(name, temperature);
+		notify(new Event(name, temperature));
+		//for (WeatherStation ws : weatherStations) 
+			//ws.displayTemperature(name, temperature);
 	}
 	
-	public void addWeatherStation(WeatherStation ws)
+	//public void addWeatherStation(WeatherStation ws)
 	{
-		weatherStations.add(ws);
+		//weatherStations.add(ws);
 	}
 }
