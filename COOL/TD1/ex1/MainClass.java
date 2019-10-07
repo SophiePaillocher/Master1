@@ -14,18 +14,21 @@ public class MainClass
 		TemperatureSensor ts1 = new TemperatureSensor("Salon");
 		TemperatureSensor ts2 = new TemperatureSensor("Cave");
 		TemperatureSensor ts3 = new TemperatureSensor("Jardin");
+		ThermometerAdaptator t = new ThermometerAdaptator(new Thermometer(20));
 		
 		ts1.signIn(ws1);
 		ts1.signIn(ws2);
 		ts2.signIn(ws2);
 		ts3.signIn(ws2);
 		ts2.signIn(alarm);
+		t.signIn(ws1);
 		
 		ts1.setTemperature(20);
 		ts2.setTemperature(14);
 		ts3.setTemperature(19);
 		
 		ts2.setTemperature(0);
+		t.setTemperature(40);
 		
 		/*
 		

@@ -6,7 +6,7 @@ public abstract class TemperatureObservable{
 	
 	private ArrayList<TemperatureObserver> observers;
 	
-	protected TemperatureObservable(){
+	public TemperatureObservable(){
 		observers = new ArrayList<TemperatureObserver>();
 	}
 	
