@@ -27,14 +27,14 @@ public class O3impl implements O3I
     }
 
     @Override
-    public void F() {
+    public synchronized void F() {
         System.out.print("F()");
         doneF=true;
         notifyAll();
     }
 
     @Override
-    public void isDoneF() {
+    public synchronized void isDoneF() {
         while (!doneF) {
             try {
                 wait();
