@@ -1,19 +1,20 @@
-public class O2impl implements O2I {
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class OD2impl extends UnicastRemoteObject implements OD2I {
     private boolean doneG;
 
-    public O2impl(){
+    public OD2impl() throws RemoteException{
         doneG=false;
     }
 
-    @Override
-    public synchronized void G() {
+    public synchronized void G() throws RemoteException{
         System.out.println("G()");
         doneG=true;
         notifyAll();
     }
 
-    @Override
-    public synchronized void isDoneG() {
+    public synchronized void isDoneG() throws RemoteException{
         while (!doneG) {
             try {
                 wait();

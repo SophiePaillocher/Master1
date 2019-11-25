@@ -1,23 +1,28 @@
-public class OD1impl implements OD1I {
-    private boolean doneA;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class OD1impl extends UnicastRemoteObject implements OD1I {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private boolean doneA;
     private boolean doneB;
     private boolean doneC;
 
-    public O1impl(){
+    public OD1impl() throws RemoteException{
         doneA=false;
         doneB=false;
         doneC=false;
     }
 
-    @Override
-    public synchronized void A() {
+    public synchronized void A() throws RemoteException{
         System.out.println("A()");
         doneA = true;
         notifyAll();
     }
 
-    @Override
-    public synchronized void isDoneA() {
+    public synchronized void isDoneA() throws RemoteException{
         while (!doneA) {
             try {
                 wait();
@@ -27,15 +32,13 @@ public class OD1impl implements OD1I {
         }
     }
 
-    @Override
-    public synchronized void B() {
+    public synchronized void B() throws RemoteException{
         System.out.println("B()");
         doneB = true;
         notifyAll();
     }
 
-    @Override
-    public synchronized void isDoneB() {
+    public synchronized void isDoneB() throws RemoteException{
         while (!doneB) {
             try {
                 wait();
@@ -45,15 +48,13 @@ public class OD1impl implements OD1I {
         }
     }
 
-    @Override
-    public synchronized void C() {
+    public synchronized void C() throws RemoteException{
         System.out.println("C()");
         doneC = true;
         notifyAll();
     }
 
-    @Override
-    public synchronized void isDoneC() {
+    public synchronized void isDoneC() throws RemoteException{
         while (!doneC) {
             try {
                 wait();

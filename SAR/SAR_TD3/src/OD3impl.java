@@ -1,22 +1,24 @@
-public class OD3impl implements OD3I
-{
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class OD3impl extends UnicastRemoteObject implements OD3I{
     private boolean doneE;
     private boolean doneF;
 
-    public O3impl(){
+    public OD3impl() throws RemoteException{
         doneE=false;
         doneF=false;
     }
 
-    @Override
-    public synchronized void E() {
+    
+    public synchronized void E() throws RemoteException{
         System.out.println("E()");
         doneE=true;
         notifyAll();
     }
 
-    @Override
-    public synchronized void isDoneE() {
+    
+    public synchronized void isDoneE() throws RemoteException{
         while (!doneE) {
             try {
                 wait();
@@ -26,15 +28,14 @@ public class OD3impl implements OD3I
         }
     }
 
-    @Override
-    public synchronized void F() {
+    
+    public synchronized void F() throws RemoteException{
         System.out.print("F()");
         doneF=true;
         notifyAll();
     }
 
-    @Override
-    public synchronized void isDoneF() {
+    public synchronized void isDoneF() throws RemoteException{
         while (!doneF) {
             try {
                 wait();
