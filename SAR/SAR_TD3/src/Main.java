@@ -10,28 +10,8 @@ public class Main {
         o3 = new O3impl();
 
         P1 p1 = new P1(o1,o2,o3);
-        P2 p2 = new P2(o1,o2,o3);
-        P3 p3 = new P3(o1,o2,o3);
 
-        p1.start();
-        p2.start();
-        p3.start();
-
-        try {
-            p1.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        try {
-            p2.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        try {
-            p3.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        p1.go();        
 
     }
 }
