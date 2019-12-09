@@ -1,6 +1,6 @@
 public class CommandeConversionMajuscule implements Commande{
 
-	public String prepareMsg(String str){
+	public String execute(String str){
 		return str.toUpperCase();
 	}
 }

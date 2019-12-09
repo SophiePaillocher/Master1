@@ -1,5 +1,3 @@
-package ex1;
-
 import java.lang.RuntimeException;
 
 public class Encodeur

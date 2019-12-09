@@ -1,6 +1,7 @@
 public class MainClass {
 	public static void main(String[] args) {
-
+		
+		Encodeur encodeur = new Encodeur();
 		String s = "Un premier message.";
 		MailService ms = new MailService();
 		ms.ajouteCommande(new CommandeConversionMajuscule());
