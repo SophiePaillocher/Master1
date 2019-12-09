@@ -1,12 +1,11 @@
-public class CommandeEncodeAlgo2 implements Commande{
-
-	private Encodeur encodeur;
+public class CommandeEncodeAlgo2 extends ChaineResponsabilite{
 	
-	public CommandeEncodeAlgo2(Encodeur encodeur){
-		this.encodeur = encodeur;
+	
+	CommandeEncodeAlgo2(Encodeur encodeur) {
+		super(encodeur);
 	}
 
-	public String execute(String str){
+	public String internalExecute(String str){
 		return encodeur.encode2(str);
 	}
 }

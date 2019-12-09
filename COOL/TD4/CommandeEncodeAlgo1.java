@@ -1,16 +1,23 @@
-public class CommandeEncodeAlgo1 implements Commande{
-	private Encodeur encodeur;
-	private char c;
+public class CommandeEncodeAlgo1 extends ChaineResponsabilite{
+	
+	private char car;
 	private int i;
 	
-	public CommandeEncodeAlgo1(Encodeur encodeur, char c, int i){
-		this.encodeur = encodeur;
-		this.c = c;
+	CommandeEncodeAlgo1(Encodeur encodeur, ChaineResponsabilite chaine, char car, int i){
+		super(encodeur, chaine);
+		this.car = car;
 		this.i = i;
 	}
-
-	public String execute(String str){
-		return encodeur.encode1(str, c, i);
+	
+	public CommandeEncodeAlgo1(Encodeur encodeur, char car, int i){
+		super(encodeur);
+		this.car = car;
+		this.i = i;
 	}
+	
+	public String internalExecute(String str){
+		return encodeur.encode1(str, car, i);
+	}
+
 }
 
