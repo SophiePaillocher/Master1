@@ -1,26 +1,28 @@
 public class P2 extends Thread {
 
-    private JobController AE, EC, EK, KG, BD, FM;
+    private JobController AE, ECK, KG, BD, FM;
 
-    public P2(JobController AE, JobController EC, JobController EK, JobController KG, JobController BD, JobController FM) {
+    public P2(JobController AE, JobController ECK, JobController KG, JobController BD, JobController FM) {
         this.AE = AE;
-        this.EC = EC;
-        this.EK = EK;
+        this.ECK = ECK;
         this.KG = KG;
         this.BD = BD;
         this.FM = FM;
     }
 
     public void run(){
-        AE.isJobeDone();
+        AE.isJobDone();
         System.out.println("E");
-        EK.jobDone();
-        EC.jobDone();
-        KG.isJobeDone();
-        System.out.println("G");
-        BD.isJobeDone();
-        System.out.println("D");
-        FM.isJobeDone();
+        ECK.jobDone();
+        KG.isJobDone();
+        if (KG.isAllow()){
+            System.out.println("G");
+        }
+        BD.isJobDone();
+        if (BD.isAllow()){
+            System.out.println("D");
+        }
+        FM.isJobDone(); //pas besoin de se préoccuper du droit car l'un des deux workflows l'a forcément
         System.out.println("M");
     }
 }
